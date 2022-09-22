@@ -1,0 +1,91 @@
+@mixin clearStyles {
+  margin: 0;
+  padding: 0;
+}
+@mixin fontSize72 {
+  font-size: 72px;
+  @media only screen and (max-width: 1023px) {
+    font-size: 48px;
+  }
+  @media only screen and (max-width: 767px) {
+    font-size: 32px;
+  }
+}
+@mixin fontSize80 {
+  font-size: 72px;
+  @media only screen and (max-width: 1023px) {
+    font-size: 48px;
+  }
+  @media only screen and (max-width: 767px) {
+    font-size: 40px;
+  }
+}
+@mixin fontSize32 {
+  font-size: 32px;
+  @media only screen and (max-width: 1023px) {
+    font-size: 26px;
+  }
+  @media only screen and (max-width: 767px) {
+    font-size: 16px;
+  }
+}
+@mixin fontSize30 {
+  font-size: 30px;
+  @media only screen and (max-width: 1560px) {
+    font-size: 22px;
+  }
+  @media only screen and (max-width: 767px) {
+    font-size: 18px;
+  }
+}
+@mixin fontSize24 {
+  font-size: 24px;
+  @media only screen and (max-width: 1560px) {
+    font-size: 22px;
+  }
+  @media only screen and (max-width: 767px) {
+    font-size: 18px;
+  }
+}
+@mixin fontSize22 {
+  font-size: 22px;
+}
+@mixin fontSize19 {
+  font-size: 19px;
+}
+@mixin fontSize18 {
+  font-size: 18px;
+  @media only screen and (max-width: 1023px) {
+    font-size: 14px;
+  }
+}
+@mixin fontSize17 {
+  font-size: 17px;
+  @media only screen and (max-width: 767px) {
+    font-size: 14px;
+  }
+}
+@mixin fontSize15 {
+  font-size: 15px;
+  @media only screen and (max-width: 1023px) {
+    font-size: 15px;
+  }
+  @media only screen and (max-width: 767px) {
+    font-size: 12px;
+  }
+}
+@mixin fontSize14 {
+  font-size: 14px;
+  @media only screen and (max-width: 1560px) {
+    font-size: 13px;
+  }
+  @media only screen and (max-width: 767px) {
+    font-size: 12px;
+  }
+}
+@mixin fontSize13 {
+  font-size: 13px;
+}
+@mixin fontSize12 {
+  font-size: 12px;
+}

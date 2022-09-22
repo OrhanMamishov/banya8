@@ -1,0 +1,53 @@
+.footer {
+  padding: 20px 0;
+  &__bottom {
+    display: flex;
+    justify-content: center;
+  }
+  &__tel {
+    @include fontSize30;
+    display: inline-block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--black-color);
+      transition: width .5s ease;
+    }
+    &:hover {
+      &::before {
+        width: 100%;
+      }
+    }
+  }
+  &__address {
+    @include fontSize15;
+    font-style: normal;
+  }
+  &__text {
+    @include fontSize14;
+    margin-right: 10px;
+  }
+  &__link {
+    @include fontSize14;
+    padding-right: 60px;
+    background-image: url("../../../img/hqrse.png");
+    background-repeat: no-repeat;
+    background-position: right 2px;
+    background-size: 28%;
+    transition: opacity .2s ease;
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+  &__top {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+}

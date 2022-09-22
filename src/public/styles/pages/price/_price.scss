@@ -1,0 +1,40 @@
+.main {
+  .price {
+    &__list {
+      width: 100%;
+      margin-bottom: 40px;
+      display: flex;
+      flex-direction: column;
+    }
+    &__item {
+      padding: 10px 0;
+      display: flex;
+      justify-content: space-evenly;
+      &-text {
+        @include fontSize15;
+        width: 300px;
+        @media only screen and (max-width: 767px) {
+          width: 85px;
+        }
+        &:first-child {
+          font-weight: 600;
+        }
+      }
+      &:not(:last-child) {
+        margin-bottom: 10px;
+        border-bottom: 1px solid var(--black-color);
+      }
+      &:first-child {
+        margin-bottom: 30px;
+        border-bottom: 2px solid var(--black-color);
+      }
+    }
+    &__text {
+      @include fontSize17;
+      text-align: center;
+      &:not(:last-child) {
+        margin-bottom: 20px;
+      }
+    }
+  }
+}

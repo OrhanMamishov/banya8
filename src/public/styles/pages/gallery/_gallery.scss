@@ -1,0 +1,52 @@
+.main {
+  img {
+    width: unset;
+  }
+  .gallery {
+    &__list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 400px));
+      align-items: center;
+      justify-content: center;
+      gap: 50px;
+      @media only screen and (max-width: 767px) {
+        gap: 20px;
+      }
+    }
+    &__wrap {
+      iframe {
+        width: 100%;
+        height: 400px;
+      }
+      &-link {
+        width: 100%;
+        height: 100%;
+        &.skeleton {
+          display: block;
+          width: 250px;
+          height: 250px;
+        }
+      }
+      &-img {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+        cursor: pointer;
+      }
+    }
+  }
+}
+.viewer-container {
+  .viewer-prev {
+    position: fixed;
+    top: 50%;
+    left: 10px;
+    transform: translate(0, -50%);
+  }
+  .viewer-next {
+    position: fixed;
+    top: 50%;
+    right: 10px;
+    transform: translate(0, -50%);
+  }
+}

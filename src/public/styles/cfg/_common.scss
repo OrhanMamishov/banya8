@@ -1,0 +1,229 @@
+@import "/src/assets/styles/normalize.css";
+@import "mixin";
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 300;
+  src: url("/src/public/fonts/inter-v12-latin_cyrillic-300.woff2")
+      format("woff2"),
+    url("/src/public/fonts/inter-v12-latin_cyrillic-300.woff") format("woff");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/src/public/fonts/inter-v12-latin_cyrillic-regular.woff2")
+      format("woff2"),
+    url("/src/public/fonts/inter-v12-latin_cyrillic-regular.woff")
+      format("woff");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  src: url("/src/public/fonts/inter-v12-latin_cyrillic-500.woff2")
+      format("woff2"),
+    url("/src/public/fonts/inter-v12-latin_cyrillic-500.woff") format("woff");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  src: url("/src/public/fonts/inter-v12-latin_cyrillic-700.woff2")
+      format("woff2"),
+    url("/src/public/fonts/inter-v12-latin_cyrillic-700.woff") format("woff");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 800;
+  src: url("/src/public/fonts/inter-v12-latin_cyrillic-800.woff2")
+      format("woff2"),
+    url("/src/public/fonts/inter-v12-latin_cyrillic-800.woff") format("woff");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 900;
+  src: url("/src/public/fonts/inter-v12-latin_cyrillic-900.woff2")
+      format("woff2"),
+    url("/src/public/fonts/inter-v12-latin_cyrillic-900.woff") format("woff");
+}
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --black-color: #000;
+  --white-color: #fff;
+  --primary-color: #5a8b9e;
+  --secondary-color: #abb8c3;
+}
+body,
+html {
+  min-width: 320px;
+  font-size: 16px;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  background-color: var(--white-color);
+  color: var(--black-color);
+}
+body {
+  &::-webkit-scrollbar {
+    width: 10px;
+    &-track {
+      background: var(--white-color);
+    }
+    &-thumb {
+      background-color: var(--primary-color);
+      border-radius: 20px;
+    }
+  }
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+a,
+li,
+label,
+span,
+div {
+  @include clearStyles;
+  letter-spacing: 0.04em;
+}
+ul {
+  @include clearStyles;
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+  color: var(--black-color);
+}
+input {
+  @include clearStyles;
+  letter-spacing: 0.04em;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+button {
+  @include clearStyles;
+  letter-spacing: 0.04em;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+img {
+  width: 100%;
+}
+section {
+  padding-top: 70px;
+  padding-bottom: 70px;
+  h2 {
+    @include fontSize24;
+    position: relative;
+    margin-bottom: 60px;
+    overflow: hidden;
+    text-align: center;
+    font-weight: 900;
+    text-align: center;
+    white-space: nowrap;
+    &::before,
+    &::after {
+      content: "";
+      display: inline-block;
+      position: relative;
+      top: -1px;
+      width: 50%;
+      height: 1px;
+      vertical-align: middle;
+      background-color: var(--black-color);
+    }
+    &::before {
+      left: -10px;
+      margin-left: -50%;
+    }
+    &::after {
+      left: 10px;
+      margin-right: -50%;
+    }
+    @media only screen and (max-width: 767px) {
+      font-size: 18px;
+      white-space: unset;
+      &::before,
+      &::after {
+        display: none;
+      }
+    }
+  }
+  h3 {
+    @include fontSize15;
+    font-weight: 800;
+  }
+  @media only screen and (max-width: 1023px) {
+    padding-top: 45px;
+    padding-bottom: 45px;
+  }
+  @media only screen and (max-width: 767px) {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    h2 {
+      margin-bottom: 20px;
+    }
+  }
+}
+.main {
+  &.is-active {
+    padding-top: 536px;
+  }
+  @media only screen and (max-width: 767px) {
+    &.is-active {
+      padding-top: 301px;
+    }
+  }
+}
+.container {
+  margin: 0 auto;
+  padding: 0 120px;
+  max-width: 1680px;
+  @media only screen and (max-width: 1439px) {
+    max-width: 1320px;
+    padding: 0 100px;
+  }
+  @media only screen and (max-width: 1023px) {
+    max-width: 924px;
+    padding: 0 50px;
+  }
+  @media only screen and (max-width: 767px) {
+    max-width: 736px;
+    padding: 0 16px;
+  }
+}
+.visually-hidden {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+}
+.disable-scroll {
+  overflow: hidden;
+}
+
+.skeleton {
+  background: #eee;
+  background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
+  border-radius: 5px;
+  background-size: 200% 100%;
+  animation: 1.5s shine linear infinite;
+  @keyframes shine {
+    to {
+      background-position-x: -200%;
+    }
+  }
+}
