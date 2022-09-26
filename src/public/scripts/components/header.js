@@ -70,7 +70,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   let dayWeekNow = days[d.getDay()];
   setTimeOnTimer(dayWeekNow);
   function setTimeOnTimer(dayweek) {
-    let n_deadline = "";
     switch (dayweek) {
       case "Воскресенье": {
         let nextDay = new Date(d); // следующий день
@@ -141,7 +140,7 @@ document.addEventListener("DOMContentLoaded", async () => {
               // если время выше чем 20-00
               let nextDay = new Date(d); // создаем новую дату
               nextDay.setDate(d.getDate() + 1); //прибавляем к дате 1
-              n_deadline = new Date(nextDay.setHours(14, 0, 0, 0)); // следующий день 14.00
+              n_deadline = new Date(nextDay.setHours(14, 00, 0, 0)); // следующий день 14.00
               changed = true; // время установлено
             }
             if (t <= time) {
@@ -164,7 +163,11 @@ document.addEventListener("DOMContentLoaded", async () => {
               changed = true;
             }
             if (t <= time) {
-              n_deadline = new Date(d.setHours(time, 0, 0, 0));
+              if (t == time) {
+                n_deadline = new Date(d.setHours(time + 2, 0, 0, 0));
+              } else {
+                n_deadline = new Date(d.setHours(time, 0, 0, 0));
+              }
               changed = true;
             }
           }
@@ -172,52 +175,5 @@ document.addEventListener("DOMContentLoaded", async () => {
         break;
       }
     }
-    const deadline = n_deadline; // new Date("Aug 11, 2022 18:30:00").getTime(); // new Date(new Date().getFullYear(), new Date().getMonth() + 1, 01);
-    // id таймера
-    let timerId = null;
-    // склонение числительных
-    function declensionNum(num, words) {
-      return words[
-        num % 100 > 4 && num % 100 < 20
-          ? 2
-          : [2, 0, 1, 1, 1, 2][num % 10 < 5 ? num % 10 : 5]
-      ];
-    }
-    // вычисляем разницу дат и устанавливаем оставшееся времени в качестве содержимого элементов
-    function countdownTimer() {
-      const diff = deadline - new Date();
-      if (diff <= 0) {
-        clearInterval(timerId);
-      }
-      const days = diff > 0 ? Math.floor(diff / 1000 / 60 / 60 / 24) : 0;
-      const hours = diff > 0 ? Math.floor(diff / 1000 / 60 / 60) % 24 : 0;
-      const minutes = diff > 0 ? Math.floor(diff / 1000 / 60) % 60 : 0;
-      const seconds = diff > 0 ? Math.floor(diff / 1000) % 60 : 0;
-      $days.textContent = days < 10 ? "0" + days : days;
-      $hours.textContent = hours < 10 ? "0" + hours : hours;
-      $minutes.textContent = minutes < 10 ? "0" + minutes : minutes;
-      $seconds.textContent = seconds < 10 ? "0" + seconds : seconds;
-      $days.dataset.title = declensionNum(days, ["день", "дня", "дней"]);
-      $hours.dataset.title = declensionNum(hours, ["час", "часа", "часов"]);
-      $minutes.dataset.title = declensionNum(minutes, [
-        "минута",
-        "минуты",
-        "минут",
-      ]);
-      $seconds.dataset.title = declensionNum(seconds, [
-        "секунда",
-        "секунды",
-        "секунд",
-      ]);
-    }
-    // получаем элементы, содержащие компоненты даты
-    const $days = document.querySelector(".timer__days");
-    const $hours = document.querySelector(".timer__hours");
-    const $minutes = document.querySelector(".timer__minutes");
-    const $seconds = document.querySelector(".timer__seconds");
-    // вызываем функцию countdownTimer
-    countdownTimer();
-    // вызываем функцию countdownTimer каждую секунду
-    timerId = setInterval(countdownTimer, 1000);
   }
 });

@@ -121,7 +121,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       res.post_two.forEach((el) => {
         const imageElement = document.createElement("div");
         imageElement.innerHTML = el.image;
-        console.log(imageElement.children[0].getAttribute("srcset"));
         const li = document.createElement("li");
         li.classList.add("reviews__item", "swiper-slide");
         const link = document.createElement("a");
