@@ -220,4 +220,28 @@ document.addEventListener("DOMContentLoaded", async () => {
     // вызываем функцию countdownTimer каждую секунду
     timerId = setInterval(countdownTimer, 1000);
   }
+  const weekTime = [14, 16, 18, 20];
+  const dayTime = [18, 19, 20];
+  const neededDays = {
+    // воскресенье
+    0: weekTime,
+    // понедельник
+    1: [],
+    // вторник
+    2: [],
+    // среда
+    3: dayTime,
+    // четверг
+    4: dayTime,
+    // пятница
+    5: [],
+    // суббота
+    6: weekTime,
+  };
+  const nowDay = new Date().getDay();
+  for (let dayweek in neededDays) {
+    if (nowDay == dayweek) {
+      console.log(dayweek);
+    }
+  }
 });
