@@ -6,9 +6,6 @@ import "viewerjs/dist/viewer.min.css";
 document.addEventListener("DOMContentLoaded", async () => {
   await fetch("hand.php", {
     method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
   })
     .then((res) => res.json())
     .then((res) => {

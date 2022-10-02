@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const swiperNews = new Swiper(".swiper-news", {
     modules: [Navigation],
     observer: true,
+    autoHeight: true,
     observeParents: true,
     spaceBetween: 30,
     navigation: {
@@ -42,6 +43,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   const swiperReviews = new Swiper(".swiper-reviews", {
     modules: [Navigation],
     spaceBetween: 30,
+    observer: true,
+    autoHeight: true,
+    observeParents: true,
     navigation: {
       nextEl: ".reviews__arrow-next",
       prevEl: ".reviews__arrow-prev",
@@ -71,11 +75,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       },
     },
   });
-  await fetch("../new_index.php", {
+  await fetch("new_index.php", {
     method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
   })
     .then((res) => res.json())
     .then((res) => {
@@ -93,7 +94,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const img = document.createElement("img");
         img.classList.add("news__item-img");
         img.src = imageElement.children[0].getAttribute("src");
-        img.alt = "Картинка из новостей";
+        img.alt = el.title;
         li.append(img);
         //
         const title = document.createElement("p");
@@ -109,6 +110,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const link = document.createElement("a");
         link.classList.add("news__item-link");
         link.textContent = "Читать далее";
+        link.href = `https://banya8.ru/blog?${el.link.split("/")[4]}`;
         li.append(link);
         //
         newsList.append(li);
@@ -125,11 +127,11 @@ document.addEventListener("DOMContentLoaded", async () => {
         li.classList.add("reviews__item", "swiper-slide");
         const link = document.createElement("a");
         link.classList.add("reviews__link");
-        link.href = el.link;
+        link.href = `https://banya8.ru/blog?${el.link.split("/")[4]}`;
         const img = document.createElement("img");
         img.classList.add("reviews__img");
         img.src = imageElement.children[0].getAttribute("src");
-        img.alt = "Картинка из новостей";
+        img.alt = el.title;
         link.append(img);
         const span = document.createElement("span");
         span.textContent = el.title;

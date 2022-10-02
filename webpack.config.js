@@ -27,7 +27,7 @@ module.exports = {
     index: "./src/public/scripts/pages/index.js",
     price: "./src/public/scripts/pages/price.js",
     oferta: "./src/public/scripts/pages/oferta.js",
-    tenants: "./src/public/scripts/pages/tenants.js",
+    arendatoram: "./src/public/scripts/pages/arendatoram.js",
     about: "./src/public/scripts/pages/about.js",
     gallery: "./src/public/scripts/pages/gallery.js",
     blog: "./src/public/scripts/pages/blog.js",

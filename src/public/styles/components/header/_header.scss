@@ -56,7 +56,7 @@
     color: var(--white-color);
   }
   &__tel {
-    transition: color .2s ease;
+    transition: color 0.2s ease;
     &:hover {
       color: var(--black-color);
     }
@@ -153,20 +153,26 @@
       &:not(:last-child) {
         margin-bottom: 10px;
       }
+      &:nth-child(3),
+      &:nth-child(5),
+      &:nth-child(10),
+      &:nth-child(11) {
+        display: none;
+      }
     }
     &-link {
       @include fontSize17;
       position: relative;
       color: var(--white-color);
       &::before {
-        content: '';
+        content: "";
         position: absolute;
         bottom: -5px;
         left: 0;
         width: 0;
         height: 2px;
         background-color: var(--white-color);
-        transition: width .5s ease;
+        transition: width 0.5s ease;
       }
       &:hover {
         &::before {
