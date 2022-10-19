@@ -124,9 +124,12 @@
     }
     &__img {
       display: block;
+      height: 100%;
+      object-fit: cover;
       &-wrap {
         position: relative;
         margin-bottom: 20px;
+        height: 400px;
       }
     }
     &__name {

@@ -220,28 +220,37 @@ document.addEventListener("DOMContentLoaded", async () => {
     // вызываем функцию countdownTimer каждую секунду
     timerId = setInterval(countdownTimer, 1000);
   }
-  const weekTime = [14, 16, 18, 20];
-  const dayTime = [18, 19, 20];
-  const neededDays = {
-    // воскресенье
-    0: weekTime,
-    // понедельник
-    1: [],
-    // вторник
-    2: [],
-    // среда
-    3: dayTime,
-    // четверг
-    4: dayTime,
-    // пятница
-    5: [],
-    // суббота
-    6: weekTime,
-  };
-  const nowDay = new Date().getDay();
-  for (let dayweek in neededDays) {
-    if (nowDay == dayweek) {
-      console.log(dayweek);
-    }
-  }
+
+  const timeToEvent = [
+    {
+      name: "Воскресенье",
+      times: [],
+    },
+    {
+      name: "Понедельник",
+      times: [],
+    },
+    {
+      name: "Вторник",
+      times: [],
+    },
+    {
+      name: "Среда",
+      times: ["18:30", "19:30", "20:30"],
+    },
+    {
+      name: "Четверг",
+      times: ["18:30", "19:30", "20:30"],
+    },
+    {
+      name: "Пятница",
+      times: ["18:30", "19:30", "20:30"],
+    },
+    {
+      name: "Суббота",
+      times: ["14:00", "16:00", "18:00", "20:00"],
+    },
+  ];
+  let dayNow = new Date().getDay();
+  let timeNow = new Date().toLocaleTimeString();
 });

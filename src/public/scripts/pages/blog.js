@@ -2,7 +2,7 @@ import "../imports";
 import "../../styles/pages/blog/style.scss";
 
 document.addEventListener("DOMContentLoaded", async () => {
-  await fetch("hand.php", {
+  await fetch("https://banya8.ru/blog/hand.php", {
     method: "GET",
   })
     .then((res) => res.json())
@@ -30,16 +30,13 @@ function viewBlog(res, name) {
           <div class="viewblog">
             <article class="viewblog__article">
               <img
-                src="img/news-img.jpg"
+                src="${blog.img}"
                 alt="${blog.name}"
                 class="viewblog__img"
               />
               <p class="viewblog__title">${blog.name}</p>
               <p class="viewblog__text">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum,
-                voluptas veniam accusantium quaerat praesentium sequi illo
-                tenetur. Magni repellendus, recusandae quidem eum corrupti, quo
-                assumenda labore voluptates, quae laborum facere!
+                ${blog.text}
               </p>
             </article>
             <aside class="viewblog__aside">
@@ -103,27 +100,30 @@ function allBlogs(res) {
           <ul class="blog__list">
           ${Object.values(blogs.posts)
             .map((blog) => {
-              return `
-              <li class="blog__item">
-                <a href="#${blog.url.split("/")[4]}" class="blog__link">
-                  <div class="blog__img-wrap">
-                    <img
-                      src="img/news-img.jpg"
-                      alt="${blog.name}"
-                      class="blog__img"
-                    />
-                    <p class="blog__item-title">${blog.name}</p>
-                  </div>
-                  <p class="blog__item-text">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Eligendi aliquam esse, explicabo nam minima tempore ut iusto
-                    tempora optio officiis libero quidem similique possimus. Natus
-                    commodi maxime quisquam quibusdam voluptatem.
-                  </p>
-                  <p class="blog__item-more">Читать далее</p>
-                </a>
-              </li>
-            `;
+              const liElement = document.createElement("li");
+              liElement.classList.add("blog__item");
+              const aElement = document.createElement("a");
+              aElement.classList.add("blog__link");
+              aElement.href = blog.url.split("/")[4];
+              const imgWrap = document.createElement("div");
+              imgWrap.classList.add("blog__img-wrap");
+              const imgElement = document.createElement("img");
+              imgElement.classList.add("blog__img");
+              imgElement.src = blog.img;
+              imgElement.alt = blog.name;
+              const pElementTitle = document.createElement("p");
+              pElementTitle.classList.add("blog__item-title");
+              pElementTitle.textContent = blog.name;
+              imgWrap.append(imgElement, pElementTitle);
+              const pElementText = document.createElement("p");
+              pElementText.classList.add("blog__item-text");
+              pElementText.textContent = blog.text;
+              const pElementMore = document.createElement("button");
+              pElementMore.classList.add("blog__item-more");
+              pElementMore.textContent = "Читать далее";
+              aElement.append(imgWrap, pElementText, pElementMore);
+              liElement.append(aElement);
+              return liElement.outerHTML;
             })
             .join("")}
           </ul>
@@ -138,9 +138,10 @@ function allBlogs(res) {
     link.addEventListener("click", (e) => {
       e.preventDefault();
       const url = document.location.origin;
-      const newUrl = url + `/blog?${link.href.split("#")[1]}`;
+      const newUrl = `${url}/blog?${link.getAttribute("href")}`;
+      console.log(newUrl);
       history.pushState(null, null, newUrl);
-      viewBlog(res, link.href.split("#")[1]);
+      viewBlog(res, link.getAttribute("href"));
     });
   });
 }
