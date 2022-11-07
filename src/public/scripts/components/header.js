@@ -251,6 +251,4 @@ document.addEventListener("DOMContentLoaded", async () => {
       times: ["14:00", "16:00", "18:00", "20:00"],
     },
   ];
-  let dayNow = new Date().getDay();
-  let timeNow = new Date().toLocaleTimeString();
 });
